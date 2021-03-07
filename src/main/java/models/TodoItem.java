@@ -1,14 +1,21 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class TodoItem {
 
     private Long id;
+    @NotBlank
     private String title;
     private boolean done;
+
+    public TodoItem() {
+
+    }
 
     public TodoItem(Long id, String title, boolean done) {
         this.id = id;
@@ -16,13 +23,13 @@ public class TodoItem {
         this.done = done;
     }
 
-
     public TodoItem(String title, boolean done) {
         this.title = title;
         this.done = done;
     }
 
     @Id
+    @GeneratedValue
     public Long getId() {
         return id;
     }
