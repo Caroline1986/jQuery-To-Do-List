@@ -1,20 +1,19 @@
 package models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "todo_item")
 public class TodoItem {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
     private String title;
     private boolean done;
 
     public TodoItem() {
-
     }
 
     public TodoItem(Long id, String title, boolean done) {
@@ -28,8 +27,7 @@ public class TodoItem {
         this.done = done;
     }
 
-    @Id
-    @GeneratedValue
+
     public Long getId() {
         return id;
     }

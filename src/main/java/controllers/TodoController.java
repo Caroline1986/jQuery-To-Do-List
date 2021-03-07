@@ -18,17 +18,20 @@ public class TodoController {
     private TodoRepository todoRepository;
 
     @GetMapping
-    public List<TodoItem> findAll(){
+    public List<TodoItem> findAll() {
         return todoRepository.findAll();
     }
 
     @PostMapping
-    public TodoItem save(@Valid @NotNull @RequestBody TodoItem todoItem){ //@Valid is for @NotBlank in model
-        return todoRepository.save(todoItem);
+    public String save(@Valid @NotNull @RequestParam(name = "Todo") String todo,
+                       @ModelAttribute TodoItem todoItem) { //@Valid is for @NotBlank in model
+        todoItem.setTitle(todo);
+        todoRepository.save(todoItem);
+        return "redirect:/ToDoHome";
     }
 
     @PutMapping
-    public TodoItem update(@Valid @NotNull @RequestBody TodoItem todoItem){
+    public TodoItem update(@Valid @NotNull @RequestBody TodoItem todoItem) {
         return todoRepository.save(todoItem);
     }
 }
