@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Chris List</title>
-    <link rel="stylesheet" href="/static/css/stlyesheet.css">
+    <link href="../static/css/stlyesheet.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <script
             src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -37,14 +37,15 @@
                     });
                 });
 
-                var check = $("<i class='fas fa-check'></i>").click(function (){
+                var check = $("<i class='fas fa-check'></i>").click(function () {
                     var p = $(this).parent();
-                    p.fadeOut(function (){
+                    p.fadeOut(function () {
                         $(".comp").append(p);
                         p.fadeIn();
-                });
+                    });
                     $(this).remove();
 
+                });
                 task.append(del,check);
                 $(".notcomp").append(task);
             //    to clear the input
